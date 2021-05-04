@@ -12,7 +12,17 @@ var sendfile=function(req,res){
 };
 //app.get("/",greet);
 
-app.get("/",sendfile);
+var css_asset=express.static(__dirname+"/public");
+app.use("/public",css_asset);
+
+//app.get("/",sendfile);
+
+var json_handler=function(req,res){
+  var data={"message": "Hello json"};
+  res.json(data);
+};
+
+app.get("/json",json_handler);
 
 
 
